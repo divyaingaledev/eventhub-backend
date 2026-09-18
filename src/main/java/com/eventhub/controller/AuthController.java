@@ -2,7 +2,10 @@ package com.eventhub.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.eventhub.dto.LoginRequest;
 import com.eventhub.dto.LoginResponse;
@@ -15,7 +18,6 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:5173")
 public class AuthController {
 
     private final AuthService authService;
@@ -29,9 +31,7 @@ public class AuthController {
         this.userService = userService;
     }
 
-
     // REGISTER
-   
 
     @PostMapping("/register")
     public ResponseEntity<UserResponse> register(
@@ -45,9 +45,7 @@ public class AuthController {
                 .body(response);
     }
 
- 
     // LOGIN
- 
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(
